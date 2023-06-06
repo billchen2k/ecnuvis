@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-color: #333;
+  --background-color: #fff;
+  --secondary-bg-color: #cccccc99;
+  --theme-color: #BE4400;
+  --navline-width: 0.5rem;
+  --font-family-name: var(--font-ibmplexsans), --apple-system, Microsoft Yahei UI, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: #ddd;
+    --background-color: #222;
+    --secondary-bg-color: #555;
+    --theme-color: #fe7d49;
+  }
+}
+
+html {
+  font-size: 16px; // Used as 1rem size.
+}
+
+body {
+  color: var(--foregound-color);
+  background: var(--background-color);
+  font-family: var(--font-ibmplexsans);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content {
+  width: calc(100vw - 16rem);
+  margin-left: 8rem;
+  margin-top: 8rem;
+
+  @media (min-width: 1280px) {
+    width: calc(100vw - 32rem);
+  }
+}
+
+.footer {
+  margin-right: 7rem;
+
+  @media (min-width: 1280px) {
+    margin-right: 23rem;
+  }
+}

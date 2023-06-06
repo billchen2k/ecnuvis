@@ -1,0 +1,74 @@
+/*
+ * nav.scss
+ * Project: ecnuvis
+ * Created: 2023-06-06 15:40:58
+ * Author: Bill Chen (bill.chen@live.com)
+ * -----
+ * Last Modified: 2023-06-06 17:50:37
+ * Modified By: Bill Chen (bill.chen@live.com>)
+ */
+
+nav {
+    z-index: 10;
+    pointer-events: none;
+}
+
+.navline-upper {
+    width: var(--navline-width);
+    height: 2rem;
+    background-color: var(--foreground-color);
+}
+
+.navhead-logo {
+    @apply flex justify-center items-center cursor-pointer pointer-events-auto;
+    width: 8rem;
+    height: 4rem;
+    background-color: var(--theme-color);
+
+    span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--background-color);
+    }
+}
+
+.navhead-content {
+    @apply flex flex-1 justify-start items-center pl-3;
+    height: 4rem;
+    background-color: var(--secondary-bg-color);
+    backdrop-filter: blur(0.5rem);
+
+    .navhead-content-texts {
+        @apply flex flex-col justify-center items-start;
+        color: var(--theme-color);
+        font-size: 1.15rem;
+        font-weight: 400;
+    }
+}
+
+.navline-lower {
+    height: calc(100vh - 6rem);
+    width: var(--navline-width);
+    background-color: var(--foreground-color);
+}
+
+.navtab-item {
+    @apply py-3 px-1 cursor-pointer transition-all duration-500 font-bold pointer-events-auto;
+    writing-mode: vertical-rl;
+    color: var(--foreground-color);
+
+    &.activated {
+        @apply font-bold;
+        color: var(--background-color);
+    }
+}
+
+.navtab-highlight {
+    @apply fixed transition-all duration-200 ease-in-out;
+    left: var(--navline-width);
+    top: 100px;
+    width: 2rem;
+    height: 8rem;
+    z-index: -1;
+    background-color: var(--foreground-color);
+}
