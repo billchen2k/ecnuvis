@@ -1,0 +1,18 @@
+/*
+ * poster.scss
+ * Project: ecnuvis
+ * Created: 2023-06-07 16:26:00
+ * Author: Bill Chen (bill.chen@live.com)
+ * -----
+ * Last Modified: 2023-06-08 00:13:42
+ * Modified By: Bill Chen (bill.chen@live.com>)
+ */
+.text-poster {
+    font-family: var(--font-ibmplexsans);
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: 200;
+    color: var(--theme-color);
+    white-space: nowrap;
+    user-select: none;
+}

@@ -4,11 +4,17 @@
  * Created: 2023-06-06 17:16:06
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 17:18:58
+ * Last Modified: 2023-06-06 21:42:47
  * Modified By: Bill Chen (bill.chen@live.com>)
  */
 
 .text-intro {
     color: var(--theme-color);
     font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.tab-section {
+    @apply text-xl font-bold flex self-start;
+    // border-bottom: 0.25rem solid var(--theme-color);
 }

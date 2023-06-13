@@ -4,7 +4,7 @@
  * Created: 2023-06-06 15:26:15
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 17:13:06
+ * Last Modified: 2023-06-07 15:47:47
  * Modified By: Bill Chen (bill.chen@live.com>)
  */
 export const routes: {
@@ -17,11 +17,11 @@ export const routes: {
     tabName: 'HOME / 首页',
     pageTitle: 'Home',
   },
-  {
-    path: '/news',
-    tabName: 'NEWS / 动态',
-    pageTitle: 'News',
-  },
+  // {
+  //   path: '/news',
+  //   tabName: 'NEWS / 动态',
+  //   pageTitle: 'News',
+  // },
   {
     path: '/publication',
     tabName: 'PUBLICATION / 论文',

@@ -1,17 +1,18 @@
 import Image from 'next/image';
 import '@/styles/home.scss';
+import NewsList from '@/components/newslist';
+import {allPages} from 'contentlayer/generated';
+import Poster from '@/components/poster';
 
 export default function Home() {
+  const homePage = allPages.findLast((page) => page.page === 'home');
   return (
-    <div className='flex flex-col gap-6 text-intro'>
-      <div className='w-full h-96 border overflow-hidden'>
+    <div className='flex flex-col gap-6'>
+      <Poster />
+      <div className='text-intro flex flex-col gap-6'
+        dangerouslySetInnerHTML={{__html: homePage?.body.html || ''}}>
       </div>
-      <p>
-        这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。这里是实验室的介绍文字。
-      </p>
-      <p>
-        This is the introduction of the lab in English. This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English. This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.This is the introduction of the lab in English.
-      </p>
+      <NewsList />
     </div>
     // <main className="flex min-h-screen flex-col items-center justify-between p-24">
     //   <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">

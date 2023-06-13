@@ -4,7 +4,7 @@
  * Created: 2023-06-06 15:37:28
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 17:49:12
+ * Last Modified: 2023-06-10 13:47:40
  * Modified By: Bill Chen (bill.chen@live.com>)
  */
 'use client';
@@ -32,6 +32,7 @@ export default function Nav(props: INavProps) {
     if (!matchedNav) {
       setHighlightY(0);
       setHighlightHeight(0);
+      setActivatedNavId('');
     } else {
       const matchedNavEle = document.getElementById(`navtab-${matchedNav.path}`);
       if (matchedNavEle) {
@@ -45,7 +46,7 @@ export default function Nav(props: INavProps) {
   return (
     <nav className='fixed top-0 left-0'>
       <div className='navline-upper'></div>
-      <div className='flex flex-row w-screen'>
+      <div className='navhead flex flex-row w-screen'>
         <Link href='/'>
           <div className='navhead-logo'>
             <span>ECNUVIS</span>

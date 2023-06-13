@@ -1,6 +1,5 @@
 import {IBM_Plex_Sans} from 'next/font/google';
 import '@/styles/global.scss';
-import Head from 'next/head';
 import Nav from '@/components/nav';
 import Footer from '@/components/footer';
 
@@ -18,7 +17,6 @@ export type IRootLayoutProps = {
 //   title: 'ECNUVIS',
 //   description: 'Visualization Lab at East China Normal University.',
 // };
-
 // export async function generateMetadata({params, searchParams}: ) {
 // }
 

@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'typography.scss';
+
 :root {
   --foreground-color: #333;
   --background-color: #fff;
-  --secondary-bg-color: #cccccc99;
+  --secondary-bg-color: #eeeeeebb;
   --theme-color: #BE4400;
+  --theme-color-light: #be420030;
   --navline-width: 0.5rem;
-  --font-family-name: var(--font-ibmplexsans), --apple-system, Microsoft Yahei UI, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,20 +19,26 @@
     --background-color: #222;
     --secondary-bg-color: #555;
     --theme-color: #fe7d49;
+    --theme-color-light: #fe7d4930;
   }
 }
 
 html {
-  font-size: 16px; // Used as 1rem size.
+  font-size: 15px; // Used as 1rem size.
 }
 
 body {
   color: var(--foregound-color);
   background: var(--background-color);
-  font-family: var(--font-ibmplexsans);
+  font-family: var(--font-ibmplexsans), -apple-system, Microsoft Yahei UI, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  ::selection {
+    background: var(--theme-color);
+    color: var(--background-color);
+    border-radius: 5px;
+  }
 }
 
 .main-content {
@@ -48,5 +56,19 @@ body {
 
   @media (min-width: 1280px) {
     margin-right: 23rem;
+  }
+}
+
+.textcolor-body {
+  color: var(--foreground-color);
+}
+
+button {
+  @apply border px-4 py-2 transition-all duration-200;
+  border-color: var(--theme-color);
+  border-radius: 3px;
+  color: var(--theme-color);
+  &:hover {
+    background-color: var(--theme-color-light);
   }
 }

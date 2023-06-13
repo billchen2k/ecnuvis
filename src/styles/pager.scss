@@ -1,0 +1,19 @@
+/*
+ * pager.scss
+ * Project: ecnuvis
+ * Created: 2023-06-06 23:40:54
+ * Author: Bill Chen (bill.chen@live.com)
+ * -----
+ * Last Modified: 2023-06-06 23:53:14
+ * Modified By: Bill Chen (bill.chen@live.com>)
+ */
+.pager-tab-item {
+    @apply font-light cursor-pointer;
+    box-sizing: content-box;
+    transform: translateY(0.25rem);
+
+    &.activated {
+        @apply font-bold;
+        border-bottom: 0.25rem solid var(--theme-color);
+    }
+}

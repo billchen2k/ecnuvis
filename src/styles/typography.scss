@@ -1,0 +1,73 @@
+/*
+ * typography.scss
+ * Project: ecnuvis
+ * Created: 2023-06-06 20:00:37
+ * Author: Bill Chen (bill.chen@live.com)
+ * -----
+ * Last Modified: 2023-06-09 12:42:30
+ * Modified By: Bill Chen (bill.chen@live.com>)
+ */
+
+.typography {
+    h1 {
+        @apply text-4xl font-bold mb-6 relative;
+        &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: -1.5rem;
+            width: 0.5rem;
+            height: 2.5rem;
+            background-color: var(--foreground-color);
+        }
+    }
+    h2 {
+        @apply text-3xl font-bold mb-4;
+    }
+    h3 {
+        @apply text-2xl font-bold mb-4;
+    }
+    h4 {
+        @apply text-xl font-bold mb-2;
+    }
+    h5 {
+        @apply text-lg font-bold mb-2;
+    }
+    p {
+        @apply mb-4;
+    }
+    a {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        color: var(--theme-color);
+        transition: all 0.2s;
+    }
+    blockquote {
+        @apply border-l-4 border-solid border-gray-400 text-gray-400 pl-4;
+        font-family: Kaiti SC, KaiTi, STKaiti, 'Times New Roman', Times, serif;
+    }
+    ul {
+        li {
+            @apply ml-6;
+            &::before {
+                    content: "•";
+                    color: var(--theme-color);
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 1em;
+                }
+        }
+    }
+
+    ol {
+        li {
+            @apply ml-6;
+            &::before {
+                    content: counter(list-item) ".";
+                    color: var(--theme-color);
+                    display: inline-block;
+                    width: 1em;
+                }
+        }
+    }
+}

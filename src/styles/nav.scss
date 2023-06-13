@@ -4,7 +4,7 @@
  * Created: 2023-06-06 15:40:58
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 17:50:37
+ * Last Modified: 2023-06-07 15:49:13
  * Modified By: Bill Chen (bill.chen@live.com>)
  */
 
@@ -17,6 +17,10 @@ nav {
     width: var(--navline-width);
     height: 2rem;
     background-color: var(--foreground-color);
+}
+
+.navhead {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navhead-logo {
@@ -36,7 +40,7 @@ nav {
     @apply flex flex-1 justify-start items-center pl-3;
     height: 4rem;
     background-color: var(--secondary-bg-color);
-    backdrop-filter: blur(0.5rem);
+    backdrop-filter: blur(0.4rem);
 
     .navhead-content-texts {
         @apply flex flex-col justify-center items-start;
@@ -53,7 +57,7 @@ nav {
 }
 
 .navtab-item {
-    @apply py-3 px-1 cursor-pointer transition-all duration-500 font-bold pointer-events-auto;
+    @apply py-4 px-1 cursor-pointer transition-all duration-500 font-bold pointer-events-auto;
     writing-mode: vertical-rl;
     color: var(--foreground-color);
 
