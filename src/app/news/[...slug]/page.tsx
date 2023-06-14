@@ -4,11 +4,12 @@
  * Created: 2023-06-10 13:12:47
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-10 13:39:17
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-14 22:03:23
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 import * as React from 'react';
 import {allNews, News} from 'contentlayer/generated';
+import {formatDateUtc8} from '@/lib/util';
 
 export interface INewsPageProps {
     params: {
@@ -35,6 +36,10 @@ export default function NewsPage(props: INewsPageProps) {
   }
   return (
     <div>
+      <div className='typography'>
+        <h1>{news.title}</h1>
+        <caption className='textcolor-theme mb-2'>{formatDateUtc8(news.dateCalc, 'yyyy.MM.dd')}</caption>
+      </div>
       <div className='typography' dangerouslySetInnerHTML={{__html: news.body.html}}></div>
     </div>
   );

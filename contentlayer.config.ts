@@ -5,8 +5,8 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 20:41:57
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-14 22:56:36
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {isoDateFromFileName} from './src/lib/util';
 import {defineDocumentType, makeSource} from '@contentlayer/source-files';
@@ -32,6 +32,28 @@ export const News = defineDocumentType(() => ({
   },
 }));
 
+export const People = defineDocumentType(() => ({
+  name: 'People',
+  filePathPattern: `people/*.md`,
+  contentType: 'markdown',
+  fields: {
+    name: {type: 'string', required: true},
+    nameAlt: {type: 'string', required: false},
+    image: {type: 'string', required: false},
+    category: {type: 'enum', required: true, options: ['phd', 'master', 'undergraduate', 'visiting', 'staff', 'alumni']},
+    grade: {type: 'number', required: true},
+    description: {type: 'string', required: false},
+    email: {type: 'string', required: false},
+    github: {type: 'string', required: false},
+    homepage: {type: 'string', required: false},
+  },
+  computedFields: {
+    id: {
+      type: 'string', resolve: (item) => item._raw.sourceFileName.split('.')[0],
+    },
+  },
+}));
+
 export const Pages = defineDocumentType(() => ({
   name: 'Pages',
   filePathPattern: `pages/*.md`,
@@ -45,5 +67,5 @@ export const Pages = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [News, Pages],
+  documentTypes: [News, Pages, People],
 });

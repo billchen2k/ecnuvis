@@ -4,8 +4,8 @@
  * Created: 2023-06-06 19:51:31
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-10 13:46:45
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-14 22:19:27
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
 import * as React from 'react';
@@ -15,6 +15,7 @@ import {spacing} from 'pangu';
 import {compareDesc} from 'date-fns';
 import {YearlyPager} from './yearlypager';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export interface INewsListProps {
 }
@@ -45,11 +46,17 @@ export default function NewsList(props: INewsListProps) {
           <div className='w-28'>{formatDateUtc8(item.dateCalc)}</div>
           <div className='flex flex-col gap-1'>
             <div className='font-bold text-base'>
-              {spacing([...[item.title], ...[item.titleAlt]].join(' / '))}
-              {item.body.html.length > 0 &&
+
+              {item.body.html.length > 1 &&
                 <Link href={`/news/${new Date(item.dateCalc).getFullYear()}/${item.id}`}>
-                  Link
+                  <div className='flex flex-row gap-1 justify-center'>
+                    {spacing([...[item.title], ...[item.titleAlt]].join(' / '))}
+                    <Image src='/assets/icons/openinnew.svg' alt='Open in new' width={16} height={16}></Image>
+                  </div>
                 </Link>
+              }
+              {item.body.html.length <= 1 &&
+                <span> {spacing([...[item.title], ...[item.titleAlt]].join(' / '))}</span>
               }
             </div>
             {item.description &&

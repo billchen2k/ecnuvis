@@ -4,8 +4,8 @@
  * Created: 2023-06-06 23:15:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 23:48:40
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-14 22:31:39
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
 
@@ -53,9 +53,8 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
     props.onSelectionChange && props.onSelectionChange(items, selectedYear);
   }, [selectedYear, props.fullData]);
 
-
   return (
-    <div className='flex flex-row gap-2 offset-'>
+    <div className='flex flex-row gap-2'>
       {years.map((item) => (
         <div key={item}
           className={`${selectedYear === item ? 'activated' : ''} pager-tab-item`}

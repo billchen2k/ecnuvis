@@ -4,8 +4,8 @@
  * Created: 2023-06-06 19:15:55
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-06 20:30:01
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-14 22:03:09
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {parse, parseISO, format} from 'date-fns';
 import {utcToZonedTime} from 'date-fns-tz';
@@ -25,9 +25,8 @@ export const isoDateFromFileName = (fileName: string, fileDate?: string): Date =
   return dt;
 };
 
-export const formatDateUtc8 = (date: Date): string => {
+export const formatDateUtc8 = (date: Date, formatStr?: string): string => {
   const timeZone = 'Asia/Shanghai';
   const utc8Date = utcToZonedTime(date, timeZone);
-  const formatStr = 'yyyy.MM.dd';
-  return format(utc8Date, formatStr);
+  return format(utc8Date, formatStr || 'yyyy.MM.dd');
 };
