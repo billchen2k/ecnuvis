@@ -8,6 +8,7 @@
   --foreground-color: #333;
   --background-color: #fff;
   --secondary-bg-color: #eeeeeebb;
+  --background-opacity-color: #ffffffbb;
   --theme-color: #BE4400;
   --theme-color-light: #be420030;
   --navline-width: 0.5rem;
@@ -18,13 +19,21 @@
     --foreground-color: #ddd;
     --background-color: #222;
     --secondary-bg-color: #555;
+    --background-opacity-color: #222222bb;
     --theme-color: #fe7d49;
     --theme-color-light: #fe7d4930;
   }
 }
 
 html {
-  font-size: 15px; // Used as 1rem size.
+  font-size: 14px; // Used as 1rem size.
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 15px;
+  }
 }
 
 body {

@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:40:54
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-13 20:18:47
+ * Last Modified: 2023-06-25 17:37:23
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 .pager-tab-item {
@@ -16,4 +16,8 @@
         @apply font-bold;
         border-bottom: 0.25rem solid var(--theme-color);
     }
+}
+
+.pager-tab-container {
+    @apply flex flex-row gap-2
 }

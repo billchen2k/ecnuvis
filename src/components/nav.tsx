@@ -4,8 +4,8 @@
  * Created: 2023-06-06 15:37:28
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-10 13:47:40
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-25 17:54:47
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
 
@@ -53,7 +53,7 @@ export default function Nav(props: INavProps) {
           </div>
         </Link>
         <div className='navhead-content'>
-          <div className='navhead-content-texts'>
+          <div className='navhead-content-texts z-50'>
             <div><b>华东师范大学可视化实验室</b></div>
             <div>ECNU Visualization Lab</div>
           </div>

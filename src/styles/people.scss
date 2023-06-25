@@ -1,0 +1,19 @@
+/*
+ * people.scss
+ * Project: ecnuvis
+ * Created: 2023-06-25 17:34:14
+ * Author: Bill Chen (bill.chen@live.com)
+ * -----
+ * Last Modified: 2023-06-25 23:45:39
+ * Modified By: Bill Chen (bill.chen@live.com)
+ */
+
+.section-nav {
+    @apply pl-3;
+    background: linear-gradient(180deg, #FFFFFFAA 0%, #FFFFFF 100%);
+    backdrop-filter: blur(0.4rem);
+}
+
+.section-anchor {
+    transform: translateY(-10rem);
+}

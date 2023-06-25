@@ -4,7 +4,7 @@
  * Created: 2023-06-14 22:31:55
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-14 22:57:43
+ * Last Modified: 2023-06-25 23:54:09
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import * as React from 'react';
@@ -35,16 +35,19 @@ export default function PeopleItem(props: IPeopleItemProps) {
     }
   };
 
-  const iconLink = (iconPath: string, link: string) => <a href={link}>
-    <Image src={iconPath} width={20} height={20} alt={link} />
-  </a>;
+  const iconLink = (iconPath: string, link: string) =>
+    <a href={link} target='_blank'>
+      <div>
+        <Image src={iconPath} width={20} height={20} alt={link} />
+      </div>
+    </a>;
 
   return (
     <div className='flex flex-col gap-1'>
       <Image src={`/images/people/${people.image || 'default'}`}
         width={256} height={256} alt={'Image of ' + people.name}
-        className='w-52 h-52 object-cover border-black border-solid border-2 mb-1' />
-      <div className='text-xl font-bold'>{[...[people.name], ...[people.nameAlt]].join(' / ')}</div>
+        className='w-48 h-48 object-cover border-black border-solid border-2 mb-1' />
+      <div className='text-lg font-bold'>{[...[people.name], ...[people.nameAlt]].join(' / ')}</div>
       <div>{people.description || getDefaultDescription()}</div>
       <div className='flex flex-row gap-2'>
         {people.email && iconLink('/assets/icons/email.svg', `mailto:${people.email}`)}

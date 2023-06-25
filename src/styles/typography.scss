@@ -4,8 +4,8 @@
  * Created: 2023-06-06 20:00:37
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-09 12:42:30
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-06-25 17:34:20
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 
 .typography {
@@ -70,4 +70,8 @@
                 }
         }
     }
+}
+
+.writing-vertical {
+    writing-mode: vertical-rl;
 }

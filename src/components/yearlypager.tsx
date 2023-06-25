@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:15:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-14 22:31:39
+ * Last Modified: 2023-06-25 17:35:58
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -54,7 +54,7 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
   }, [selectedYear, props.fullData]);
 
   return (
-    <div className='flex flex-row gap-2'>
+    <div className='pager-tab-container'>
       {years.map((item) => (
         <div key={item}
           className={`${selectedYear === item ? 'activated' : ''} pager-tab-item`}
