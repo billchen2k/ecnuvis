@@ -5,7 +5,7 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-14 22:56:36
+ * Last Modified: 2023-06-26 12:21:19
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {isoDateFromFileName} from './src/lib/util';
@@ -67,5 +67,6 @@ export const Pages = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
+  contentDirExclude: ['templates'],
   documentTypes: [News, Pages, People],
 });

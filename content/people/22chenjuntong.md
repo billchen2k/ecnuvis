@@ -1,6 +1,6 @@
 ---
-name: 陈俊潼
-nameAlt: Juntong Chen
+name: 张三
+nameAlt: San Zhang
 image: 22chenjuntong.jpg
 category: master
 grade: 2022

@@ -13,4 +13,4 @@ descriptionAlt: Description in English
 # 可选，string 类型，新闻的日期。格式为 YYYY-MM-DD HH:MM:SS，指定了新闻的时间。如果没有，则默认 parse
 date: 2022-03-05 12:00:00
 ---
-<!-- 可选，新闻内容。若有，则该新闻可点击。 -->
+<!-- 可选，新闻内容。若有这部分内容，则该新闻可点击。 -->
