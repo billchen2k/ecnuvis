@@ -5,7 +5,7 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-26 12:21:19
+ * Last Modified: 2023-07-03 15:27:03
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {isoDateFromFileName} from './src/lib/util';
@@ -54,6 +54,30 @@ export const People = defineDocumentType(() => ({
   },
 }));
 
+export const Publication = defineDocumentType(() => ({
+  name: 'Publication',
+  filePathPattern: `publication/*.md`,
+  contentType: 'markdown',
+  fields: {
+    title: {type: 'string', required: true},
+    authors: {type: 'list', required: true, of: {type: 'string'}},
+    venue: {type: 'string', required: true},
+    abstract: {type: 'string', required: false},
+    image: {type: 'string', required: false},
+    date: {type: 'string', required: false},
+    pdf: {type: 'string', required: false},
+    github: {type: 'string', required: false},
+    video: {type: 'string', required: false},
+    website: {type: 'string', required: false},
+  },
+  computedFields: {
+    dateCalc: {
+      type: 'date',
+      resolve: (item) => isoDateFromFileName(item._raw.sourceFileName, item.date),
+    },
+  },
+}));
+
 export const Pages = defineDocumentType(() => ({
   name: 'Pages',
   filePathPattern: `pages/*.md`,
@@ -68,5 +92,5 @@ export const Pages = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   contentDirExclude: ['templates'],
-  documentTypes: [News, Pages, People],
+  documentTypes: [News, Pages, People, Publication],
 });
