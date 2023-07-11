@@ -5,7 +5,7 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-07-03 15:27:03
+ * Last Modified: 2023-07-11 23:55:12
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {isoDateFromFileName} from './src/lib/util';
@@ -69,6 +69,7 @@ export const Publication = defineDocumentType(() => ({
     github: {type: 'string', required: false},
     video: {type: 'string', required: false},
     website: {type: 'string', required: false},
+    doi: {type: 'string', required: false},
   },
   computedFields: {
     dateCalc: {

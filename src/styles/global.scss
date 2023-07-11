@@ -6,6 +6,7 @@
 
 :root {
   --foreground-color: #333;
+  --secondary-fg-color: #666;
   --background-color: #fff;
   --secondary-bg-color: #eeeeeebb;
   --background-opacity-color: #ffffffbb;
@@ -17,6 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-color: #ddd;
+    --secondary-fg-color: #aaa;
     --background-color: #222;
     --secondary-bg-color: #555;
     --background-opacity-color: #222222bb;
@@ -74,6 +76,10 @@ body {
 
 .textcolor-theme {
   color: var(--theme-color);
+}
+
+.textcolor-secondary {
+  color: var(--secondary-fg-color);
 }
 
 button {
