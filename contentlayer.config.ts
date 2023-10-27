@@ -5,7 +5,7 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-07-11 23:55:12
+ * Last Modified: 2023-10-27 11:05:25
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {isoDateFromFileName} from './src/lib/util';
@@ -41,7 +41,7 @@ export const People = defineDocumentType(() => ({
     nameAlt: {type: 'string', required: false},
     image: {type: 'string', required: false},
     category: {type: 'enum', required: true, options: ['phd', 'master', 'undergraduate', 'visiting', 'staff', 'alumni']},
-    grade: {type: 'number', required: true},
+    year: {type: 'number', required: true},
     description: {type: 'string', required: false},
     email: {type: 'string', required: false},
     github: {type: 'string', required: false},

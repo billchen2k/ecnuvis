@@ -10,7 +10,7 @@ titleAlt: News Title in English
 description: 描述文字
 # 可选，string 类型，次要描述文字，通常为英文翻译，展示在描述文字之下。
 descriptionAlt: Description in English
-# 可选，string 类型，新闻的日期。格式为 YYYY-MM-DD HH:MM:SS，指定了新闻的时间。如果没有，则默认 parse
+# 可选，string 类型，新闻的日期。格式为 YYYY-MM-DD HH:MM:SS，指定了新闻的时间。如果没有，则默认 parse 文件名中的日期。该字段的优先级高于文件名中的日期。
 date: 2022-03-05 12:00:00
 ---
 <!-- 可选，新闻内容。若有这部分内容，则该新闻可点击。 -->

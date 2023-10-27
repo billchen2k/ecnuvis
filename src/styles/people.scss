@@ -4,7 +4,7 @@
  * Created: 2023-06-25 17:34:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-25 23:45:39
+ * Last Modified: 2023-10-27 11:05:03
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
@@ -12,8 +12,27 @@
     @apply pl-3;
     background: linear-gradient(180deg, #FFFFFFAA 0%, #FFFFFF 100%);
     backdrop-filter: blur(0.4rem);
+    z-index: 1000;
 }
 
 .section-anchor {
     transform: translateY(-10rem);
+}
+
+.flash {
+    animation: flash 1s infinite;
+}
+
+.badge-container {
+    @apply opacity-0 hover:opacity-90 transition-all duration-100;
+
+    .badge {
+        @apply absolute bottom-0 left-0 px-2 pr-6;
+        background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%,
+                                             rgba(0, 0, 0, 0.5) 70%,
+                                            rgba(0, 0, 0, 0) 100%);
+        span {
+            color: #eeeeee;
+        }
+    }
 }

@@ -4,7 +4,7 @@
  * Created: 2023-06-06 19:51:31
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-14 22:19:27
+ * Last Modified: 2023-10-26 17:01:41
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -26,7 +26,7 @@ export default function NewsList(props: INewsListProps) {
   return (
     <div className='flex flex-col gap-2 textcolor-body'>
       <div className='flex flex-row gap-8 mb-2 items-center'>
-        <div className={'textcolor-body tab-section text-xl font-bold'}>新闻动态 / NEWS</div>
+        <div className={'textcolor-body tab-section text-xl font-bold'}>动态 / NEWS</div>
         <YearlyPager fullData={allNews}
           maximumYears={2}
           yearResolver={(item) => new Date(item.dateCalc).getFullYear()}
@@ -49,7 +49,7 @@ export default function NewsList(props: INewsListProps) {
 
               {item.body.html.length > 1 &&
                 <Link href={`/news/${new Date(item.dateCalc).getFullYear()}/${item.id}`}>
-                  <div className='flex flex-row gap-1 justify-center'>
+                  <div className='flex flex-row gap-1 justify-center underline underline-offset-4'>
                     {spacing([...[item.title], ...[item.titleAlt]].join(' / '))}
                     <Image src='/assets/icons/openinnew.svg' alt='Open in new' width={16} height={16}></Image>
                   </div>

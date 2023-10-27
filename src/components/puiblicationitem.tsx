@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-07-12 00:13:13
+ * Last Modified: 2023-10-26 01:12:49
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -12,6 +12,7 @@ import {getInjectedAuthors} from '@/lib/publication';
 import {Publication} from 'contentlayer/generated';
 import Image from 'next/image';
 import '@/styles/typography.scss';
+import '@/styles/publication.scss';
 import * as React from 'react';
 import Link from 'next/link';
 

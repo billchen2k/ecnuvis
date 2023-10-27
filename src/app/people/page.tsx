@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:00:10
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-25 23:52:44
+ * Last Modified: 2023-10-27 11:09:20
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -25,7 +25,7 @@ export default function People(props: IPeopleProps) {
   }[] = [
     {
       category: 'staff',
-      title: 'Staff / 教职',
+      title: 'Staff',
     },
     {
       category: 'phd',
@@ -48,6 +48,8 @@ export default function People(props: IPeopleProps) {
       title: 'Alumni / 校友',
     },
   ];
+
+  // const flashingId = window.location.hash ? window.location.hash.substring(1) : '';
 
   return (
     <div>
@@ -77,10 +79,10 @@ export default function People(props: IPeopleProps) {
             {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3'> */}
             <div className='flex flex-wrap gap-4'>
               {/* Repeat 10 times */}
-              {Array.from({length: 10}, () => sectionPeople).flatMap((item) => item).map((item) =>
-                <a href={`#${sec.category}`} key={`people-item-${item.id}`} >
+              {Array.from({length: 1}, () => sectionPeople).flatMap((item) => item).map((item) =>
+                <a href={`#${sec.category}`} key={`people-item-${item.id}`}>
                   <div id={`@${item.id}`} className='section-anchor' />
-                  <PeopleItem people={item} key={item.id} />
+                  <PeopleItem people={item} key={item.id} flash={true}/>
                 </a>
               )}
             </div>

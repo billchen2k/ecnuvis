@@ -4,15 +4,17 @@
  * Created: 2023-06-14 22:31:55
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-07-10 18:57:38
+ * Last Modified: 2023-10-27 11:08:58
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import * as React from 'react';
 import {People} from 'contentlayer/generated';
 import Image from 'next/image';
+import '@/styles/people.scss';
 
 export interface IPeopleItemProps {
     people: People;
+    flash?: boolean;
 }
 
 export default function PeopleItem(props: IPeopleItemProps) {
@@ -44,9 +46,18 @@ export default function PeopleItem(props: IPeopleItemProps) {
 
   return (
     <div className='flex flex-col gap-1'>
-      <Image src={`/images/people/${people.image || 'default.jpg'}`}
-        width={256} height={256} alt={'Image of ' + people.name}
-        className='w-48 h-48 object-cover border-black border-solid border-2 mb-1' />
+      <div className='relative w-48 h-48'>
+        <Image src={`/images/people/${people.image || 'default.jpg'}`}
+          width={256} height={256} alt={'Image of ' + people.name}
+          className={`w-48 h-48 object-cover border-black border-solid border-2 mb-1 ${props.flash ? 'flash' : ''}`} />
+        {people.category != 'staff' &&
+          <div className='bottom-0 left-0 absolute badge-container w-full h-full'>
+            <div className='badge'>
+              <span>{people.category == 'alumni' ? 'Graduated ' : 'Enrolled '}{people.year}</span>
+            </div>
+          </div>
+        }
+      </div>
       <div className='text-lg font-bold'>{[...[people.name], ...[people.nameAlt]].join(' / ')}</div>
       <div>{people.description || getDefaultDescription()}</div>
       <div className='flex flex-row gap-2'>

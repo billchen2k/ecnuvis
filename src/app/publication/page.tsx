@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:01:25
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-07-12 00:15:26
+ * Last Modified: 2023-07-12 00:16:55
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -24,7 +24,7 @@ export default function Publication(props: IPublicationProps) {
     <div>
       <div className='flex flex-row gap-8 mb-4 items-center textcolor-body'>
         <YearlyPager fullData={allPublications}
-          maximumYears={6}
+          maximumYears={8}
           yearResolver={(item) => new Date(item.dateCalc).getFullYear()}
           onSelectionChange={(items, year) => {
             setShowAbstract(new Array(items.length).fill(false));
