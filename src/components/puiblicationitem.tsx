@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-26 01:12:49
+ * Last Modified: 2023-10-28 14:21:14
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -15,6 +15,7 @@ import '@/styles/typography.scss';
 import '@/styles/publication.scss';
 import * as React from 'react';
 import Link from 'next/link';
+import {getItemImageURL} from '@/lib/util';
 
 export interface IPublicationItemProps {
     publication: Publication;
@@ -23,7 +24,7 @@ export interface IPublicationItemProps {
 }
 
 export default function PublicationItem(props: IPublicationItemProps) {
-  const abstractRef = React.useRef<HTMLDivElement>(null);
+  // const abstractRef = React.useRef<HTMLDivElement>(null);
 
   const publication = props.publication;
   const injectedAuthors = getInjectedAuthors(publication.authors);
@@ -40,16 +41,16 @@ export default function PublicationItem(props: IPublicationItemProps) {
       </div>
     </a>;
 
-  React.useEffect(() => {
-    if (!abstractRef.current) return;
-    abstractRef.current.style.height = props.showAbstract ? abstractRef.current.scrollHeight + 'px' : '0px';
-  });
+  // React.useEffect(() => {
+  //   if (!abstractRef.current) return;
+  //   abstractRef.current.style.height = props.showAbstract ? abstractRef.current.scrollHeight + 'px' : '0px';
+  // });
 
   return (
     <div className='cursor-default flex flex-row gap-3 hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
       onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
     >
-      <Image src={`/images/publication/${publication.image || 'default.jpg'}`}
+      <Image src={getItemImageURL('publication', publication.image)}
         width={200} height={200} alt={'Cover image of paper ' + publication.title}
         className='w-64 h-32 object-cover border-black border-solid border' />
       <div className='flex flex-col gap-1'>
@@ -84,10 +85,10 @@ export default function PublicationItem(props: IPublicationItemProps) {
             iconLink('/assets/icons/homepage.svg', 'DOI', publication.website)
           }
         </div>
-        <div ref={abstractRef} className={`transition-all duration-400 overflow-hidden`}>
+        {/* <div ref={abstractRef} className={`transition-all duration-400 overflow-hidden`}>
           {'Abstract: '}
           {publication.abstract}
-        </div>
+        </div> */}
         <div>
         </div>
       </div>

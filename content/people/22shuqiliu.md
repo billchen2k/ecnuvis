@@ -1,0 +1,12 @@
+---
+name: 刘淑琪
+nameAlt: Shuqi Liu
+image: 22shuqiliu
+category: master
+year: 2022
+description: Visualization design
+github: https://github.com/Shuqi-67
+homepage: 
+email: shuqiliu234@gmail.com
+---
+

@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:00:10
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-27 11:09:20
+ * Last Modified: 2023-10-27 11:48:12
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -37,7 +37,7 @@ export default function People(props: IPeopleProps) {
     },
     {
       category: 'undergraduate',
-      title: 'Undergraduate / 本科生',
+      title: 'Undergrad / 本科',
     },
     {
       category: 'visiting',
@@ -72,10 +72,21 @@ export default function People(props: IPeopleProps) {
       {sections.map((sec) => {
         const sectionPeople = allPeople.filter((item) => item.category === sec.category);
         if (sectionPeople.length == 0) return null;
+        if (sec.category == 'alumni') {
+          sectionPeople.sort((a, b) => {
+            return b.year - a.year;
+          });
+        } else if (sec.category == 'staff') {
+
+        } else {
+          sectionPeople.sort((a, b) => {
+            return a.year - b.year;
+          });
+        }
         return (
           <div key={`people-section-${sec.category}`} className='mb-4'>
             <div id={sec.category} className='section-anchor'/>
-            <div className='text-xl font-bold absolute writing-vertical -translate-x-12 h-36'>{sec.title}</div>
+            <div className='text-xl font-bold absolute writing-vertical -translate-x-12 h-48'>{sec.title}</div>
             {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3'> */}
             <div className='flex flex-wrap gap-4'>
               {/* Repeat 10 times */}

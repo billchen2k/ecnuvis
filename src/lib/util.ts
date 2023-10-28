@@ -4,7 +4,7 @@
  * Created: 2023-06-06 19:15:55
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-14 22:03:09
+ * Last Modified: 2023-10-28 14:30:03
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {parse, parseISO, format} from 'date-fns';
@@ -29,4 +29,16 @@ export const formatDateUtc8 = (date: Date, formatStr?: string): string => {
   const timeZone = 'Asia/Shanghai';
   const utc8Date = utcToZonedTime(date, timeZone);
   return format(utc8Date, formatStr || 'yyyy.MM.dd');
+};
+
+export const getItemImageURL = (base: string, url?: string): string => {
+  if (!url) {
+    return '/images/placeholder.jpg';
+  }
+  if (url.startsWith('http')) {
+    return url;
+  } else {
+    return `/images/${base}/${url}`;
+  }
+  return '';
 };
