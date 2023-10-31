@@ -4,7 +4,7 @@
  * Created: 2023-10-28 13:10:41
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 17:05:08
+ * Last Modified: 2023-10-31 23:32:35
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
@@ -25,7 +25,7 @@ export default function Gallery(props: IGalleryProps) {
   return (
     <div>
       <div className='flex flex-row gap-4 flex-wrap'>
-        {Array.from({length: 10}, () => allPictures).flatMap((item) => item).map((pic, idx) => (
+        {Array.from({length: 1}, () => allPictures).flatMap((item) => item).map((pic, idx) => (
           <div key={pic.id} onClick={() => {
             setFocusedPic(pic);
             setShowHover(true);
