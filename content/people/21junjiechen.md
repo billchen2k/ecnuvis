@@ -1,7 +1,7 @@
 ---
 name: 陈俊杰
 nameAlt: Junjie Chen
-image: 21junjiechen
+image: 21junjiechen.jpeg
 category: master
 year: 2021
 description: Augmented Reality

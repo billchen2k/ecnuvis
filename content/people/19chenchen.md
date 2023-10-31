@@ -1,12 +1,11 @@
 ---
 name: 陈辰
 nameAlt: Chen Chen
-image: 16chenchen
+image: 16chenchen.jpg
 category: alumni
-year: 2016
+year: 2020
 description: AI Engineer @Alibaba International
-github: 
-homepage: 
+github:
+homepage:
 email: starla.cchen@gmail.com
 ---
-

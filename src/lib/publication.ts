@@ -4,10 +4,10 @@
  * Created: 2023-07-03 15:17:10
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-07-03 15:33:13
+ * Last Modified: 2023-10-30 15:39:40
  * Modified By: Bill Chen (bill.chen@live.com)
  */
-import {allPeople, People} from '.contentlayer/generated';
+import {allPeople} from '.contentlayer/generated';
 
 export interface InjectedAuthor {
   displayName: string;

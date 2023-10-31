@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:40:54
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-25 17:37:23
+ * Last Modified: 2023-10-31 16:21:16
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 .pager-tab-item {
@@ -19,5 +19,5 @@
 }
 
 .pager-tab-container {
-    @apply flex flex-row gap-2
+    @apply flex flex-row gap-3 transition-all duration-200;
 }

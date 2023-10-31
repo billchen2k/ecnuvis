@@ -1,0 +1,41 @@
+/*
+ * gallery.scss
+ * Project: ecnuvis
+ * Created: 2023-10-28 14:46:11
+ * Author: Bill Chen (bill.chen@live.com)
+ * -----
+ * Last Modified: 2023-10-30 20:16:48
+ * Modified By: Bill Chen (bill.chen@live.com)
+ */
+
+.image-container {
+    @apply transition-all duration-300 shadow-md;
+
+    .overlay-container {
+        @apply absolute top-0 bottom-0 shadow-gray-600 shadow-xl cursor-pointer h-full w-full bg-black opacity-0 transition-all duration-300;
+
+        .overlay {
+            @apply flex flex-col justify-center items-center h-full w-full;
+
+            .text {
+                color: #eeeeee;
+            }
+        }
+    }
+
+    .image {
+        @apply transition-all duration-200;
+    }
+
+    &:hover {
+        @apply scale-[1.03] shadow-lg shadow-neutral-700/25;
+
+        .overlay-container {
+            @apply opacity-70;
+        }
+
+        .image {
+            @apply scale-[1.02] shadow-gray-600 shadow-xl;
+        }
+    }
+}

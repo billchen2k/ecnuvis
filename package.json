@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@plaiceholder/next": "^3.0.0",
+    "@types/lodash": "^4.14.200",
     "@types/node": "20.2.5",
     "@types/pangu": "^4.0.0",
     "@types/react": "18.2.8",
@@ -19,14 +21,17 @@
     "date-fns-tz": "^2.0.0",
     "eslint": "8.42.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-next": "13.4.4",
-    "next": "13.4.4",
+    "eslint-config-next": "13.5.6",
+    "lodash": "^4.17.21",
+    "next": "13.5.6",
     "next-contentlayer": "^0.3.3",
     "pangu": "^4.0.7",
+    "plaiceholder": "^3.0.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.62.1",
+    "sharp": "^0.32.6",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"
   }

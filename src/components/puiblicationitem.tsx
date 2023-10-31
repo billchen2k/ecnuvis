@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-28 14:21:14
+ * Last Modified: 2023-10-31 16:37:14
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -16,6 +16,7 @@ import '@/styles/publication.scss';
 import * as React from 'react';
 import Link from 'next/link';
 import {getItemImageURL} from '@/lib/util';
+import {debounce} from 'lodash';
 
 export interface IPublicationItemProps {
     publication: Publication;
@@ -48,11 +49,15 @@ export default function PublicationItem(props: IPublicationItemProps) {
 
   return (
     <div className='cursor-default flex flex-row gap-3 hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
-      onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
+      // onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
     >
+      {/* <div className='flex flex-shrink-0 w-64 relative'> */}
       <Image src={getItemImageURL('publication', publication.image)}
-        width={200} height={200} alt={'Cover image of paper ' + publication.title}
-        className='w-64 h-32 object-cover border-black border-solid border' />
+        width={300} height={180} placeholder={'blur'} blurDataURL={publication.blurData}
+        alt={'Cover image of paper ' + publication.title}
+        className='w-64 h-auto object-contain flex-shrink-0 border-black border-solid border' />
+
+
       <div className='flex flex-col gap-1'>
         <div className='text-xl font-bold'>{publication.title}</div>
         <div className='flex flex-row gap-1'>
@@ -67,13 +72,16 @@ export default function PublicationItem(props: IPublicationItemProps) {
             }
           })}
         </div>
-        <div className='textcolor-secondary italic'>{publication.venue}</div>
+        {
+          publication.venue && <div className='textcolor-secondary italic'>{publication.venue}</div>
+        }
+
         <div className='flex flex-row gap-2'>
-          {publication.pdf &&
-            iconLink('/assets/icons/pdf.svg', 'PDF', publication.pdf)
+          {publication.paper &&
+            iconLink('/assets/icons/pdf.svg', 'Paper', publication.paper)
           }
-          {publication.github &&
-            iconLink('/assets/icons/github.svg', 'GitHub', publication.github)
+          {publication.code &&
+            iconLink('/assets/icons/github.svg', 'Code', publication.code)
           }
           {publication.video &&
             iconLink('/assets/icons/video.svg', 'Video', publication.video)

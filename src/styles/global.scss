@@ -82,8 +82,6 @@ body {
   color: var(--secondary-fg-color);
 }
 
-
-
 button {
   @apply border px-4 py-2 transition-all duration-200;
   border-color: var(--theme-color);
@@ -92,4 +90,8 @@ button {
   &:hover {
     background-color: var(--theme-color-light);
   }
+}
+
+img {
+  transition: all 0.2s;
 }

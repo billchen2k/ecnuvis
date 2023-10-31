@@ -1,7 +1,7 @@
 ---
 name: 宋思程
 nameAlt: Sicheng Song
-image: 19shawn
+image: 19shawn.jpg
 category: phd
 year: 2019
 description: AI4VIS

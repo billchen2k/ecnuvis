@@ -4,7 +4,7 @@
  * Created: 2023-06-07 15:55:39
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-13 20:53:06
+ * Last Modified: 2023-10-30 23:44:21
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -73,6 +73,7 @@ export default function Poster(props: IPosterProps) {
               return <span key={sIndex}>{segment.toUpperCase()}</span>;
             }
           })}
+          <span></span>
         </div>
       ));
     } );

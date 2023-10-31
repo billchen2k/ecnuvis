@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:15:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-25 17:35:58
+ * Last Modified: 2023-10-31 16:50:17
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -17,6 +17,8 @@ export interface IYearlyPagerProps<T> {
   yearResolver: (item: T) => number;
   onSelectionChange?: (items: T[], year: number) => void;
   maximumYears?: number;
+  showAll?: boolean;
+  customStatus?: string;
 }
 
 export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
@@ -44,20 +46,31 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
 
   React.useEffect(() => {
     let items: T[] = [];
-    if (selectedYear !== -1) {
-      items = props.fullData.filter((item) => props.yearResolver(item) === selectedYear);
-    } else {
+    if (selectedYear === -2) {
+      items = props.fullData;
+    } else if (selectedYear === -1) {
       const earlier = years[years.length - 2];
       items = props.fullData.filter((item) => props.yearResolver(item) < earlier);
+    } else {
+      items = props.fullData.filter((item) => props.yearResolver(item) === selectedYear);
     }
     props.onSelectionChange && props.onSelectionChange(items, selectedYear);
   }, [selectedYear, props.fullData]);
 
   return (
     <div className='pager-tab-container'>
+      {props.customStatus &&
+        <div className='activated pager-tab-item'>
+          {props.customStatus}
+        </div>
+      }
+      {props.showAll && <div key={-2}
+        className={`${selectedYear === -2 && !props.customStatus ? 'activated' : ''} pager-tab-item`}
+        onClick={() => setSelectedYear(-2)}
+      >ALL</div>}
       {years.map((item) => (
         <div key={item}
-          className={`${selectedYear === item ? 'activated' : ''} pager-tab-item`}
+          className={`${selectedYear === item && !props.customStatus ? 'activated' : ''} pager-tab-item`}
           onClick={() => setSelectedYear(item)}
         >
           {item === -1 ? 'Earlier' : item}

@@ -4,11 +4,9 @@
  * Created: 2023-06-06 14:00:10
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-27 11:48:12
+ * Last Modified: 2023-10-30 17:36:34
  * Modified By: Bill Chen (bill.chen@live.com)
  */
-'use client';
-
 import PeopleItem from '@/components/peopleitem';
 import {allPeople, People} from 'contentlayer/generated';
 import '@/styles/typography.scss';
@@ -74,13 +72,15 @@ export default function People(props: IPeopleProps) {
         if (sectionPeople.length == 0) return null;
         if (sec.category == 'alumni') {
           sectionPeople.sort((a, b) => {
-            return b.year - a.year;
+            return a.year != b.year ? b.year - a.year : (a.nameAlt || a.name).localeCompare(b.nameAlt || b.name);
           });
         } else if (sec.category == 'staff') {
-
+          sectionPeople.sort((a, b) => {
+            return b.order || 0 - (a.order || 0);
+          });
         } else {
           sectionPeople.sort((a, b) => {
-            return a.year - b.year;
+            return a.year != b.year ? a.year - b.year : (a.nameAlt || a.name).localeCompare(b.nameAlt || b.name);
           });
         }
         return (
@@ -88,11 +88,11 @@ export default function People(props: IPeopleProps) {
             <div id={sec.category} className='section-anchor'/>
             <div className='text-xl font-bold absolute writing-vertical -translate-x-12 h-48'>{sec.title}</div>
             {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3'> */}
-            <div className='flex flex-wrap gap-4'>
+            <div className='flex flex-wrap gap-8'>
               {/* Repeat 10 times */}
               {Array.from({length: 1}, () => sectionPeople).flatMap((item) => item).map((item) =>
-                <a href={`#${sec.category}`} key={`people-item-${item.id}`}>
-                  <div id={`@${item.id}`} className='section-anchor' />
+                <a href={`#${item.id}`} key={`people-item-${item.id}`}>
+                  <div id={`${item.id}`} className='section-anchor' />
                   <PeopleItem people={item} key={item.id} flash={true}/>
                 </a>
               )}

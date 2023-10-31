@@ -5,10 +5,11 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-27 11:05:25
+ * Last Modified: 2023-10-31 16:06:33
  * Modified By: Bill Chen (bill.chen@live.com)
  */
-import {isoDateFromFileName} from './src/lib/util';
+import {getBlurData} from './src/lib/ssr';
+import {getItemImageURL, isoDateFromFileName} from './src/lib/util';
 import {defineDocumentType, makeSource} from '@contentlayer/source-files';
 
 export const News = defineDocumentType(() => ({
@@ -32,6 +33,32 @@ export const News = defineDocumentType(() => ({
   },
 }));
 
+const Picture = defineDocumentType(() => ({
+  name: 'Picture',
+  filePathPattern: `gallery/*.md`,
+  contentType: 'markdown',
+  fields: {
+    title: {type: 'string', required: true},
+    subTitle: {type: 'string', required: false},
+    description: {type: 'string', required: false},
+    image: {type: 'string', required: true},
+    date: {type: 'string', required: false},
+  },
+  computedFields: {
+    dateCalc: {
+      type: 'date', resolve: (item) => isoDateFromFileName(item._raw.sourceFileName, item.date),
+    },
+    id: {
+      type: 'string', resolve: (item) => item._raw.sourceFileName.split('_').slice(1).join('_').split('.')[0],
+    },
+    blurData: {
+      type: 'string', resolve: (item) => {
+        return getBlurData(getItemImageURL('gallery', item.image));
+      },
+    },
+  },
+}));
+
 export const People = defineDocumentType(() => ({
   name: 'People',
   filePathPattern: `people/*.md`,
@@ -46,10 +73,16 @@ export const People = defineDocumentType(() => ({
     email: {type: 'string', required: false},
     github: {type: 'string', required: false},
     homepage: {type: 'string', required: false},
+    order: {type: 'number', required: false},
   },
   computedFields: {
     id: {
       type: 'string', resolve: (item) => item._raw.sourceFileName.split('.')[0],
+    },
+    blurData: {
+      type: 'string', resolve: (item) => {
+        return getBlurData(getItemImageURL('people', item.image));
+      },
     },
   },
 }));
@@ -61,12 +94,12 @@ export const Publication = defineDocumentType(() => ({
   fields: {
     title: {type: 'string', required: true},
     authors: {type: 'list', required: true, of: {type: 'string'}},
-    venue: {type: 'string', required: true},
+    venue: {type: 'string', required: false},
     abstract: {type: 'string', required: false},
     image: {type: 'string', required: false},
     date: {type: 'string', required: false},
-    pdf: {type: 'string', required: false},
-    github: {type: 'string', required: false},
+    paper: {type: 'string', required: false},
+    code: {type: 'string', required: false},
     video: {type: 'string', required: false},
     website: {type: 'string', required: false},
     doi: {type: 'string', required: false},
@@ -75,6 +108,11 @@ export const Publication = defineDocumentType(() => ({
     dateCalc: {
       type: 'date',
       resolve: (item) => isoDateFromFileName(item._raw.sourceFileName, item.date),
+    },
+    blurData: {
+      type: 'string', resolve: (item) => {
+        return getBlurData(getItemImageURL('publication', item.image));
+      },
     },
   },
 }));
@@ -93,5 +131,5 @@ export const Pages = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   contentDirExclude: ['templates'],
-  documentTypes: [News, Pages, People, Publication],
+  documentTypes: [News, Pages, People, Publication, Picture],
 });
