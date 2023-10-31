@@ -4,7 +4,7 @@
  * Created: 2023-06-07 15:55:39
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-30 23:44:21
+ * Last Modified: 2023-10-31 23:14:56
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -18,7 +18,7 @@ export interface IPosterProps {
 export default function Poster(props: IPosterProps) {
   const LINE_COUNT = 4;
   const FPS = 5;
-  const PIXEL_PER_FRAME = 5;
+  const PIXEL_PER_FRAME = 1;
 
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [lines, setLines] = React.useState<string[][]>([]);
