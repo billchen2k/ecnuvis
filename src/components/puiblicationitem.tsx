@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 15:31:32
+ * Last Modified: 2023-11-01 17:18:41
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -19,9 +19,10 @@ import {getItemImageURL} from '@/lib/util';
 import {debounce} from 'lodash';
 
 export interface IPublicationItemProps {
-    publication: Publication;
-    showAbstract?: boolean;
-    toggleShowAbstract?: () => void;
+  publication: Publication;
+  showAbstract?: boolean;
+  toggleShowAbstract?: () => void;
+  highlightQuery?: string;
 }
 
 export default function PublicationItem(props: IPublicationItemProps) {
@@ -47,10 +48,21 @@ export default function PublicationItem(props: IPublicationItemProps) {
   //   abstractRef.current.style.height = props.showAbstract ? abstractRef.current.scrollHeight + 'px' : '0px';
   // });
 
+  const getHighlight = (text: string) => {
+    const escaped = (props.highlightQuery || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (escaped.length >= 3) {
+      return text.replace(new RegExp(escaped, 'gi'), (match) => {
+        return `<span class='highlight'>${match}</span>`;
+      });
+    } else {
+      return text;
+    }
+  };
+
   return (
     <div className='cursor-default flex flex-row gap-3 max-md:flex-row-reverse
      hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
-      // onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
+    // onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
     >
       {/* <div className='flex flex-shrink-0 w-64 relative'> */}
       <Image src={getItemImageURL('publication', publication.image)}
@@ -58,23 +70,23 @@ export default function PublicationItem(props: IPublicationItemProps) {
         alt={'Cover image of paper ' + publication.title}
         className='w-64 h-fit max-sm:w-32 object-contain flex-shrink-0 border-black border-solid border' />
 
-
       <div className='flex flex-col gap-1 w-full'>
-        <div className='text-xl font-bold'>{publication.title}</div>
+        <div className='text-xl font-bold' dangerouslySetInnerHTML={{__html: getHighlight(publication.title)}} />
         <div className='flex flex-row gap-1 whitespace-nowrap flex-wrap hyphens-auto'>
           {injectedAuthors.map((item, index) => {
             const displayName = index < injectedAuthors.length - 1 ? item.displayName + ',' : item.displayName;
             if (item.linkable) {
-              return <Link href={`/people#${item.peopleId || ''}`} key={item.displayName} className='underline underline-offset-4'>
-                {displayName}
+              return <Link href={`/people#${item.peopleId || ''}`} key={item.displayName}
+                className='underline underline-offset-4' dangerouslySetInnerHTML={{__html: getHighlight(displayName)}}>
               </Link>;
             } else {
-              return <div key={item.displayName}>{displayName}</div>;
+              return <div key={item.displayName} dangerouslySetInnerHTML={{__html: getHighlight(displayName)}} />;
             }
           })}
         </div>
         {
-          publication.venue && <div className='textcolor-secondary italic'>{publication.venue}</div>
+          publication.venue && <div className='textcolor-secondary italic'
+            dangerouslySetInnerHTML={{__html: getHighlight(publication.venue)}} />
         }
 
         <div className='flex flex-row gap-2'>

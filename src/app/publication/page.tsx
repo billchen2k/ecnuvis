@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:01:25
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 17:02:45
+ * Last Modified: 2023-11-01 17:13:58
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -27,7 +27,7 @@ export default function Publication(props: IPublicationProps) {
 
 
   const performSearch = (query: string) => {
-    if (query.length < 1) {
+    if (query.length <= 2) {
       setPagerStatus(undefined);
       return;
     }
@@ -48,7 +48,7 @@ export default function Publication(props: IPublicationProps) {
   const debouncedPerformSearch = React.useCallback(
       debounce((query) => {
         performSearch(query);
-      }, 300),
+      }, 100),
       []
   );
 
@@ -90,6 +90,7 @@ export default function Publication(props: IPublicationProps) {
               newAbstractStatus[index] = !showAbstract[index];
               setShowAbstract(newAbstractStatus);
             }}
+            highlightQuery={searchStr}
           />
         )}
       </div>

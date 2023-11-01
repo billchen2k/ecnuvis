@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:15:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 17:02:38
+ * Last Modified: 2023-11-01 17:07:55
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -66,6 +66,9 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
   React.useEffect(() => {
     if (props.customStatus) {
       setSelectedYear(-3);
+    }
+    if (!props.customStatus && props.showAll) {
+      setSelectedYear(-2);
     }
   }, [props.customStatus]);
 
