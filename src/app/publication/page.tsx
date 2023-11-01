@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:01:25
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 17:10:00
+ * Last Modified: 2023-11-01 12:47:13
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -50,7 +50,7 @@ export default function Publication(props: IPublicationProps) {
 
   return (
     <div>
-      <div className='flex flex-row gap-8 mb-4 items-center textcolor-body justify-center'>
+      <div className='flex flex-row gap-8 mb-4 items-center textcolor-body justify-center max-md:flex-col max-md:items-start max-md:gap-3'>
         <YearlyPager fullData={allPublications}
           maximumYears={8} showAll customStatus={pagerStatus}
           yearResolver={(item) => new Date(item.dateCalc).getFullYear()}
@@ -63,10 +63,10 @@ export default function Publication(props: IPublicationProps) {
             setPagerStatus(undefined);
             setSearchStr('');
           }} />
-        <div className='flex flex-1' />
+        <div className='max-md:hidden flex flex-1' />
         {/* Searchbox */}
-        <div className='flex relative'>
-          <input type='text' value={searchStr} placeholder='Search Papers...' className='w-96 h-12 border-black rounde-sm border-solid border-2 px-3 pr-10 focus:outline-none'
+        <div className='flex relative max-md:w-full'>
+          <input type='text' value={searchStr} placeholder='Search Papers...' className='w-96 h-12 max-md:w-full border-black rounde-sm border-solid border-2 px-3 pr-10 focus:outline-none'
             onChange={(e) => setSearchStr(e.target.value)} />
           <Image className='absolute right-3 top-3'
             src={'/assets/icons/search.svg'} width={20} height={20} alt={'search icon'}/>

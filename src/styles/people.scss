@@ -4,15 +4,28 @@
  * Created: 2023-06-25 17:34:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 09:55:30
+ * Last Modified: 2023-11-01 16:05:39
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
 .section-nav {
-    @apply pl-3;
+    @apply max-md:hidden;
     background: linear-gradient(180deg, #FFFFFFAA 0%, #FFFFFF 100%);
     backdrop-filter: blur(0.4rem);
-    z-index: 1000;
+    z-index: 4;
+
+    @screen md {
+        @apply pl-3 flex-row gap-4 text-xl top-24 sticky pt-3 pb-4 w-full
+    }
+}
+
+.section-indicator {
+    @apply mb-4 text-xl font-bold;
+
+    @screen md {
+        @apply absolute -translate-x-12 h-48 text-xl font-bold mb-0;
+        writing-mode: vertical-rl;
+    }
 }
 
 .section-anchor {
@@ -35,6 +48,7 @@
         color: #eeeeee;
     }
 }
+
 .hover-shine {
     position: relative;
     overflow: hidden;

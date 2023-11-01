@@ -4,7 +4,7 @@
  * Created: 2023-10-28 13:10:41
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 23:32:35
+ * Last Modified: 2023-11-01 16:26:06
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
@@ -21,6 +21,12 @@ export interface IGalleryProps {
 export default function Gallery(props: IGalleryProps) {
   const [focusedPic, setFocusedPic] = React.useState<Picture | undefined>(undefined);
   const [showHover, setShowHover] = React.useState<boolean>(false);
+  const [imgLoading, setImgLoading] = React.useState<boolean>(false);
+
+  const hideHover = () => {
+    setShowHover(false);
+    setFocusedPic(undefined);
+  }
 
   return (
     <div>
@@ -29,6 +35,7 @@ export default function Gallery(props: IGalleryProps) {
           <div key={pic.id} onClick={() => {
             setFocusedPic(pic);
             setShowHover(true);
+            setImgLoading(true);
           }}>
             <PictureItem picture={pic} />
           </div>
@@ -38,16 +45,24 @@ export default function Gallery(props: IGalleryProps) {
         opacity: showHover ? 1 : 0,
         pointerEvents: showHover ? 'auto' : 'none',
         transition: 'all 0.2s',
-      }} onClick={() => setShowHover(false)}
+      }} onClick={() => {
+        hideHover();
+      }}
       >
         {focusedPic &&
           <div className='flex flex-col'>
-            <div>
+            <div className='relative'>
               <Image src={getItemImageURL('gallery', focusedPic.image)}
                 alt={focusedPic?.title || ''} placeholder='blur' blurDataURL={focusedPic.blurData}
                 width={2000} height={2000} layout='responsive'
+                onLoad={() => setImgLoading(false)}
                 className={`max-h-[85vh] max-w-[85vw] min-w-[30vw] min-h-[30vh] object-contain
                 image shadow-lg shadow-neutral-800/50 transition-all duration-200`} />
+              {imgLoading &&
+                <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center bg-neutral-900/60'>
+                  <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white' />
+                </div>
+              }
             </div>
 
             <div className='flex flex-row gap-2 w-full text-[#eeeeee] font-light pt-2 opacity-70 transition-all duration-200'>

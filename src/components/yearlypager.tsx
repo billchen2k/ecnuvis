@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:15:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 23:16:09
+ * Last Modified: 2023-11-01 16:00:17
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -60,9 +60,9 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
   }, [selectedYear, props.fullData]);
 
   return (
-    <div className='pager-tab-container'>
+    <div className='pager-tab-container overflow-x-scroll overflow-y-clip'>
       {props.customStatus &&
-        <div className='activated pager-tab-item'>
+        <div className='activated pager-tab-item whitespace-nowrap'>
           {props.customStatus}
         </div>
       }

@@ -4,8 +4,8 @@
  * Created: 2023-06-06 15:40:58
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-06-07 15:49:13
- * Modified By: Bill Chen (bill.chen@live.com>)
+ * Last Modified: 2023-11-01 12:48:08
+ * Modified By: Bill Chen (bill.chen@live.com)
  */
 
 nav {
@@ -17,6 +17,17 @@ nav {
     width: var(--navline-width);
     height: 2rem;
     background-color: var(--foreground-color);
+
+    @apply max-md:hidden;
+}
+
+.navhead-menu {
+    @apply md:hidden cursor-pointer pointer-events-auto;
+
+    width: 3rem;
+    height: 4rem;
+    background-color: var(--theme-color);
+    filter: brightness(0.8);
 }
 
 .navhead {
@@ -54,6 +65,8 @@ nav {
     height: calc(100vh - 6rem);
     width: var(--navline-width);
     background-color: var(--foreground-color);
+
+    @apply max-md:hidden
 }
 
 .navtab-item {
@@ -64,6 +77,23 @@ nav {
     &.activated {
         @apply font-bold;
         color: var(--background-color);
+    }
+}
+
+.navbarmobile-container {
+    @apply transition-all duration-200 flex flex-col z-[5] fixed top-0 left-0
+    gap-12 w-screen h-screen backdrop-blur-lg justify-center items-center;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    pointer-events: all;
+}
+
+.navtabmobile-item {
+    @apply text-2xl;
+    color: var(--background-color);
+
+    &.activated {
+        @apply font-bold;
     }
 }
 

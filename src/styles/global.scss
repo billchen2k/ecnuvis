@@ -45,6 +45,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   ::selection {
     background: var(--theme-color);
     color: var(--background-color);
@@ -53,19 +54,32 @@ body {
 }
 
 .main-content {
-  width: calc(100vw - 16rem);
-  margin-left: 8rem;
-  margin-top: 8rem;
+  margin-left: 2rem;
+  margin-top: 6rem;
+  width: calc(100vw - 4rem);
 
-  @media (min-width: 1280px) {
-    width: calc(100vw - 32rem);
+
+  @media (min-width: 768px) {
+    width: calc(100vw - 16rem);
+    margin-left: 8rem;
+    margin-top: 8rem;
   }
+
+
+  @media (min-width: 1500px) {
+    width: calc(100vw - 36rem);
+  }
+
 }
 
 .footer {
-  margin-right: 7rem;
+  margin-right: 2rem;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
+    margin-right: 7rem;
+  }
+
+  @media (min-width: 1500px) {
     margin-right: 23rem;
   }
 }
@@ -87,6 +101,7 @@ button {
   border-color: var(--theme-color);
   border-radius: 3px;
   color: var(--theme-color);
+
   &:hover {
     background-color: var(--theme-color-light);
   }

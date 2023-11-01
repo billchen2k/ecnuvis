@@ -4,7 +4,7 @@
  * Created: 2023-06-06 19:51:31
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-26 17:01:41
+ * Last Modified: 2023-11-01 16:07:05
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -24,9 +24,9 @@ export default function NewsList(props: INewsListProps) {
   const [news, setNews] = React.useState<News[]>([]);
 
   return (
-    <div className='flex flex-col gap-2 textcolor-body'>
+    <div className='flex flex-col gap-2 textcolor-body transition-all duration-300 h-fit'>
       <div className='flex flex-row gap-8 mb-2 items-center'>
-        <div className={'textcolor-body tab-section text-xl font-bold'}>动态 / NEWS</div>
+        <div className={'textcolor-body tab-section text-xl font-bold whitespace-nowrap'}>动态 / NEWS</div>
         <YearlyPager fullData={allNews}
           maximumYears={2}
           yearResolver={(item) => new Date(item.dateCalc).getFullYear()}

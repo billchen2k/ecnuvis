@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 16:37:14
+ * Last Modified: 2023-11-01 15:31:32
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -48,19 +48,20 @@ export default function PublicationItem(props: IPublicationItemProps) {
   // });
 
   return (
-    <div className='cursor-default flex flex-row gap-3 hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
+    <div className='cursor-default flex flex-row gap-3 max-md:flex-row-reverse
+     hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
       // onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
     >
       {/* <div className='flex flex-shrink-0 w-64 relative'> */}
       <Image src={getItemImageURL('publication', publication.image)}
         width={300} height={180} placeholder={'blur'} blurDataURL={publication.blurData}
         alt={'Cover image of paper ' + publication.title}
-        className='w-64 h-auto object-contain flex-shrink-0 border-black border-solid border' />
+        className='w-64 h-fit max-sm:w-32 object-contain flex-shrink-0 border-black border-solid border' />
 
 
-      <div className='flex flex-col gap-1'>
+      <div className='flex flex-col gap-1 w-full'>
         <div className='text-xl font-bold'>{publication.title}</div>
-        <div className='flex flex-row gap-1'>
+        <div className='flex flex-row gap-1 whitespace-nowrap flex-wrap hyphens-auto'>
           {injectedAuthors.map((item, index) => {
             const displayName = index < injectedAuthors.length - 1 ? item.displayName + ',' : item.displayName;
             if (item.linkable) {
@@ -88,9 +89,6 @@ export default function PublicationItem(props: IPublicationItemProps) {
           }
           {publication.website &&
             iconLink('/assets/icons/homepage.svg', 'Website', publication.website)
-          }
-          {publication.website &&
-            iconLink('/assets/icons/homepage.svg', 'DOI', publication.website)
           }
         </div>
         {/* <div ref={abstractRef} className={`transition-all duration-400 overflow-hidden`}>

@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:00:10
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-30 17:36:34
+ * Last Modified: 2023-11-01 15:43:19
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import PeopleItem from '@/components/peopleitem';
@@ -50,10 +50,10 @@ export default function People(props: IPeopleProps) {
   // const flashingId = window.location.hash ? window.location.hash.substring(1) : '';
 
   return (
-    <div>
+    <div className={''}>
       {/* Section Navigation */}
       {/* <div className='typography'><h1>People / 成员</h1></div> */}
-      <div className='flex flex-col sm:flex-row gap-4 text-xl mb-4 sticky top-24 pt-3 pb-4 w-full section-nav'>
+      <div className='flex flex-col section-nav'>
         {sections.map((sec) => {
           const sectionPeople = allPeople.filter((item) => item.category === sec.category);
           if (sectionPeople.length == 0) return null;
@@ -86,7 +86,9 @@ export default function People(props: IPeopleProps) {
         return (
           <div key={`people-section-${sec.category}`} className='mb-4'>
             <div id={sec.category} className='section-anchor'/>
-            <div className='text-xl font-bold absolute writing-vertical -translate-x-12 h-48'>{sec.title}</div>
+            <div className='section-indicator'>
+              {sec.title}
+            </div>
             {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3'> */}
             <div className='flex flex-wrap gap-8'>
               {/* Repeat 10 times */}
