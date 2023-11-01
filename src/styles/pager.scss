@@ -4,13 +4,12 @@
  * Created: 2023-06-06 23:40:54
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:13:24
+ * Last Modified: 2023-11-01 16:32:52
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 .pager-tab-item {
-    @apply font-light cursor-pointer transition-all duration-200;
-    border-bottom: 0.25rem solid rgba(0, 0, 0, 0);
-
+    @apply font-light cursor-pointer transition-all duration-200 ease-out;
+    border-bottom: 0rem solid var(--theme-color);
 
     &.activated {
         @apply font-bold;
@@ -19,7 +18,7 @@
 }
 
 .pager-tab-container {
-    @apply flex flex-row gap-3 transition-all duration-200 box-content h-8;
+    @apply flex flex-row gap-3 transition-all duration-200 box-content h-[1.75rem];
     transform: translateY(0.25rem);
 
     ::-webkit-scrollbar {

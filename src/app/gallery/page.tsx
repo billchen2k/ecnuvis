@@ -4,7 +4,7 @@
  * Created: 2023-10-28 13:10:41
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:26:06
+ * Last Modified: 2023-11-01 16:38:04
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
@@ -26,7 +26,7 @@ export default function Gallery(props: IGalleryProps) {
   const hideHover = () => {
     setShowHover(false);
     setFocusedPic(undefined);
-  }
+  };
 
   return (
     <div>

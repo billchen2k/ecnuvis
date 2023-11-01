@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:01:25
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 12:47:13
+ * Last Modified: 2023-11-01 17:02:45
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -28,6 +28,7 @@ export default function Publication(props: IPublicationProps) {
 
   const performSearch = (query: string) => {
     if (query.length < 1) {
+      setPagerStatus(undefined);
       return;
     }
     const items = allPublications.filter((item) => {
@@ -39,14 +40,21 @@ export default function Publication(props: IPublicationProps) {
     }).sort((a, b) => {
       return new Date(b.dateCalc).getTime() - new Date(a.dateCalc).getTime();
     });
+    console.log('search result', items.length);
     setPublication(items);
     setPagerStatus(`${items.length} Results`);
   };
 
-  const debouncedPerformSearch = debounce(performSearch, 300);
+  const debouncedPerformSearch = React.useCallback(
+      debounce((query) => {
+        performSearch(query);
+      }, 300),
+      []
+  );
+
   React.useEffect(() => {
     debouncedPerformSearch(searchStr);
-  }, [searchStr, debouncedPerformSearch]);
+  }, [searchStr]);
 
   return (
     <div>
@@ -59,17 +67,18 @@ export default function Publication(props: IPublicationProps) {
             items.sort((a, b) => {
               return new Date(b.dateCalc).getTime() - new Date(a.dateCalc).getTime();
             });
-            setPublication(items);
             setPagerStatus(undefined);
-            setSearchStr('');
+            setPublication(items);
           }} />
         <div className='max-md:hidden flex flex-1' />
         {/* Searchbox */}
         <div className='flex relative max-md:w-full'>
-          <input type='text' value={searchStr} placeholder='Search Papers...' className='w-96 h-12 max-md:w-full border-black rounde-sm border-solid border-2 px-3 pr-10 focus:outline-none'
+          <input type='text'
+            value={searchStr} placeholder='Search Papers...'
+            className='w-96 h-12 max-md:w-full border-black rounde-sm border-solid border-2 px-3 pr-10 focus:outline-none'
             onChange={(e) => setSearchStr(e.target.value)} />
           <Image className='absolute right-3 top-3'
-            src={'/assets/icons/search.svg'} width={20} height={20} alt={'search icon'}/>
+            src={'/assets/icons/search.svg'} width={20} height={20} alt={'search icon'} />
         </div>
         {/* <div className={'textcolor-body tab-section text-xl font-bold'}>新闻动态 / NEWS</div> */}
       </div>

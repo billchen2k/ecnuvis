@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:15:14
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:00:17
+ * Last Modified: 2023-11-01 17:02:38
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -22,6 +22,7 @@ export interface IYearlyPagerProps<T> {
 }
 
 export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
+  // -2: all, -1: earlier; -3: under custom status
   const [selectedYear, setSelectedYear] = React.useState<number>(0);
 
   const years = React.useMemo(() => {
@@ -44,11 +45,13 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
     } else if (years.length > 0) {
       setSelectedYear(years[0]);
     }
-  }, [years]);
+  }, []);
 
   React.useEffect(() => {
     let items: T[] = [];
-    if (selectedYear === -2) {
+    if (selectedYear === -3) {
+      return;
+    } else if (selectedYear === -2) {
       items = props.fullData;
     } else if (selectedYear === -1) {
       const earlier = years[years.length - 2];
@@ -57,7 +60,15 @@ export function YearlyPager<T>(props: IYearlyPagerProps<T>) {
       items = props.fullData.filter((item) => props.yearResolver(item) === selectedYear);
     }
     props.onSelectionChange && props.onSelectionChange(items, selectedYear);
-  }, [selectedYear, props.fullData]);
+  }, [selectedYear]);
+
+
+  React.useEffect(() => {
+    if (props.customStatus) {
+      setSelectedYear(-3);
+    }
+  }, [props.customStatus]);
+
 
   return (
     <div className='pager-tab-container overflow-x-scroll overflow-y-clip'>
