@@ -5,7 +5,7 @@
  * Created: 2023-06-06 18:51:30
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 16:06:33
+ * Last Modified: 2023-11-02 02:39:33
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import {getBlurData} from './src/lib/ssr';
@@ -79,6 +79,11 @@ export const People = defineDocumentType(() => ({
     id: {
       type: 'string', resolve: (item) => item._raw.sourceFileName.split('.')[0],
     },
+    emailReducted: {
+      type: 'string', resolve: (item) => {
+        return item.email ? item.email.replace('@', ' [at] ') : '';
+      },
+    },
     blurData: {
       type: 'string', resolve: (item) => {
         return getBlurData(getItemImageURL('people', item.image));
@@ -119,8 +124,8 @@ export const Publication = defineDocumentType(() => ({
 
 export const Pages = defineDocumentType(() => ({
   name: 'Pages',
-  filePathPattern: `pages/*.md`,
-  contentType: 'markdown',
+  filePathPattern: `pages/*.mdx`,
+  contentType: 'mdx',
   computedFields: {
     page: {
       type: 'string', resolve: (item) => item._raw.sourceFileName.split('.')[0],

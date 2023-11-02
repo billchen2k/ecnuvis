@@ -4,7 +4,7 @@
  * Created: 2023-06-14 22:31:55
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:05:23
+ * Last Modified: 2023-11-02 02:36:11
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import * as React from 'react';
@@ -84,7 +84,7 @@ export default async function PeopleItem(props: IPeopleItemProps) {
         {people.description || getDefaultDescription()}
       </div>
       <div className='flex flex-row gap-2'>
-        {people.email && iconLink('/assets/icons/email.svg', `mailto:${people.email}`)}
+        {people.email && iconLink('/assets/icons/email.svg', `mailto:${people.emailReducted}`)}
         {people.github && iconLink('/assets/icons/github.svg', people.github)}
         {people.homepage && iconLink('/assets/icons/homepage.svg', people.homepage)}
       </div>

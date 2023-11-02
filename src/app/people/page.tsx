@@ -4,7 +4,7 @@
  * Created: 2023-06-06 14:00:10
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 15:43:19
+ * Last Modified: 2023-11-02 02:31:14
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 import PeopleItem from '@/components/peopleitem';
@@ -39,11 +39,11 @@ export default function People(props: IPeopleProps) {
     },
     {
       category: 'visiting',
-      title: 'Visiting Students / 访问学生',
+      title: 'Visiting / 访问',
     },
     {
       category: 'alumni',
-      title: 'Alumni / 校友',
+      title: 'Alumni / 毕业生',
     },
   ];
 

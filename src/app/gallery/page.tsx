@@ -4,7 +4,7 @@
  * Created: 2023-10-28 13:10:41
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:38:04
+ * Last Modified: 2023-11-01 19:12:10
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
@@ -31,15 +31,19 @@ export default function Gallery(props: IGalleryProps) {
   return (
     <div>
       <div className='flex flex-row gap-4 flex-wrap'>
-        {Array.from({length: 1}, () => allPictures).flatMap((item) => item).map((pic, idx) => (
-          <div key={pic.id} onClick={() => {
-            setFocusedPic(pic);
-            setShowHover(true);
-            setImgLoading(true);
-          }}>
-            <PictureItem picture={pic} />
-          </div>
-        ))}
+        {Array.from({length: 1}, () => allPictures).flatMap((item) => item)
+            .sort((a, b) => {
+              return new Date(b.dateCalc).getTime() - new Date(a.dateCalc).getTime();
+            })
+            .map((pic, idx) => (
+              <div key={pic.image + pic.id} onClick={() => {
+                setFocusedPic(pic);
+                setShowHover(true);
+                setImgLoading(true);
+              }}>
+                <PictureItem picture={pic} />
+              </div>
+            ))}
       </div>
       <div className='fixed top-0 right-0 w-screen h-screen flex flex-col items-center z-10 justify-center bg-black/80' style={{
         opacity: showHover ? 1 : 0,

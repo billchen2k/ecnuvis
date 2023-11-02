@@ -4,7 +4,7 @@
  * Created: 2023-06-06 23:40:54
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:32:52
+ * Last Modified: 2023-11-01 18:59:31
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 .pager-tab-item {
@@ -21,7 +21,7 @@
     @apply flex flex-row gap-3 transition-all duration-200 box-content h-[1.75rem];
     transform: translateY(0.25rem);
 
-    ::-webkit-scrollbar {
+    &::-webkit-scrollbar {
         display: none;
     }
 

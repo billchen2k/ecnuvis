@@ -4,7 +4,7 @@
  * Created: 2023-06-06 19:51:31
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:07:05
+ * Last Modified: 2023-11-01 19:09:05
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -42,25 +42,27 @@ export default function NewsList(props: INewsListProps) {
           return compareDesc(new Date(a.dateCalc), new Date(b.dateCalc));
         }
       }).map((item: News) => {
-        return (<div className='flex flex-row' key={item._raw.sourceFileName}>
+        return (<div className='flex flex-row gap-2' key={item._raw.sourceFileName}>
           <div className='w-28'>{formatDateUtc8(item.dateCalc)}</div>
           <div className='flex flex-col gap-1'>
             <div className='font-bold text-base'>
 
               {item.body.html.length > 1 &&
                 <Link href={`/news/${new Date(item.dateCalc).getFullYear()}/${item.id}`}>
-                  <div className='flex flex-row gap-1 justify-center underline underline-offset-4'>
-                    {spacing([...[item.title], ...[item.titleAlt]].join(' / '))}
+                  <div className='flex flex-row gap-1 justify-center underline underline-offset-4 flex-wrap'>
+                    {spacing([item.title || '', item.titleAlt || ''].filter((s) => s.length > 0).join(' / '))}
                     <Image src='/assets/icons/openinnew.svg' alt='Open in new' width={16} height={16}></Image>
                   </div>
                 </Link>
               }
               {item.body.html.length <= 1 &&
-                <span> {spacing([...[item.title], ...[item.titleAlt]].join(' / '))}</span>
+                <span>
+                  {spacing([item.title || '', item.titleAlt || ''].filter((s) => s.length > 0).join(' / '))}
+                </span>
               }
             </div>
             {item.description &&
-              <div className='text-sm'>{spacing(item.description.repeat(1))}</div>}
+              <div className='text-sm'>{spacing(item.description)}</div>}
             {item.descriptionAlt &&
               <div className='text-sm'>{spacing(item.descriptionAlt)}</div>}
           </div>

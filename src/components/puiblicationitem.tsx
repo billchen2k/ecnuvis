@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 17:18:41
+ * Last Modified: 2023-11-01 19:22:10
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -26,7 +26,7 @@ export interface IPublicationItemProps {
 }
 
 export default function PublicationItem(props: IPublicationItemProps) {
-  // const abstractRef = React.useRef<HTMLDivElement>(null);
+  const abstractRef = React.useRef<HTMLDivElement>(null);
 
   const publication = props.publication;
   const injectedAuthors = getInjectedAuthors(publication.authors);
@@ -43,10 +43,10 @@ export default function PublicationItem(props: IPublicationItemProps) {
       </div>
     </a>;
 
-  // React.useEffect(() => {
-  //   if (!abstractRef.current) return;
-  //   abstractRef.current.style.height = props.showAbstract ? abstractRef.current.scrollHeight + 'px' : '0px';
-  // });
+  React.useEffect(() => {
+    if (!abstractRef.current) return;
+    abstractRef.current.style.height = props.showAbstract ? abstractRef.current.scrollHeight + 'px' : '0px';
+  });
 
   const getHighlight = (text: string) => {
     const escaped = (props.highlightQuery || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -62,7 +62,7 @@ export default function PublicationItem(props: IPublicationItemProps) {
   return (
     <div className='cursor-default flex flex-row gap-3 max-md:flex-row-reverse
      hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
-    // onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
+    onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
     >
       {/* <div className='flex flex-shrink-0 w-64 relative'> */}
       <Image src={getItemImageURL('publication', publication.image)}
@@ -103,10 +103,14 @@ export default function PublicationItem(props: IPublicationItemProps) {
             iconLink('/assets/icons/homepage.svg', 'Website', publication.website)
           }
         </div>
-        {/* <div ref={abstractRef} className={`transition-all duration-400 overflow-hidden`}>
-          {'Abstract: '}
-          {publication.abstract}
-        </div> */}
+        {
+          publication.abstract && publication.abstract.length > 1 &&
+          <div ref={abstractRef} className={`transition-all duration-400 overflow-hidden`}>
+            {'Abstract: '}
+            <span dangerouslySetInnerHTML={{__html: getHighlight(publication.abstract)}}>
+            </span>
+          </div>
+        }
         <div>
         </div>
       </div>

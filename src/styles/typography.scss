@@ -4,7 +4,7 @@
  * Created: 2023-06-06 20:00:37
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 17:13:21
+ * Last Modified: 2023-11-01 21:20:10
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 
@@ -72,9 +72,14 @@
     }
 }
 
+hr {
+    @apply mb-3;
+}
+
 .writing-vertical {
     writing-mode: vertical-rl;
 }
+
 
 .highlight {
     @apply bg-red-200;

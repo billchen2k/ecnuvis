@@ -1,5 +1,6 @@
 import {IBM_Plex_Sans} from 'next/font/google';
 import '@/styles/global.scss';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import Nav from '@/components/nav';
 import Footer from '@/components/footer';
 
