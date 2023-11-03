@@ -1,0 +1,9 @@
+.contentlayer
+.idea
+.next
+.vscode
+node_modules
+scripts
+.git
+.gitignore
+test

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  ecnuvis:
+    build: .
+    ports:
+      - '5800:5800'
+    environment:
+      - NEXT_PUBLIC_MAPBOX_TOKEN
+    env_file:
+     - .env.local
+    restart: unless-stopped

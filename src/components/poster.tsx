@@ -4,7 +4,7 @@
  * Created: 2023-06-07 15:55:39
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-10-31 23:14:56
+ * Last Modified: 2023-11-03 16:39:03
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -85,7 +85,6 @@ export default function Poster(props: IPosterProps) {
     initLines();
     animate();
   }, []);
-
 
   return (
     <div ref={containerRef} className='w-full h-80 overflow-hidden'>
