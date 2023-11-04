@@ -1,0 +1,22 @@
+name: deploy
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+    - name: deploy
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ vars.SERVER_HOST }}
+        username: ${{ vars.SERVER_USER }}
+        port: 22
+        key: ${{ secrets.SERVER_RSA_KEY }}
+        script: |
+          cd ${{ vars.PROJECT_ROOT }}
+          git pull
+          docker-compose up --build -d
