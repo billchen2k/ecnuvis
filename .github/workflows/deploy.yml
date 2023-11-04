@@ -17,6 +17,9 @@ jobs:
         port: 22
         key: ${{ secrets.SERVER_RSA_KEY }}
         script: |
+          if [ ! -d ${{ vars.PROJECT_ROOT }} ]; then
+            git clone ${{ vars.PROJECT_GIT }} ${{ vars.PROJECT_ROOT }}
+          fi
           cd ${{ vars.PROJECT_ROOT }}
-          git pull
+          git fetch && git reset --hard origin/main
           docker-compose up --build -d
