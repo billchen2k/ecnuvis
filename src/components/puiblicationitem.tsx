@@ -4,7 +4,7 @@
  * Created: 2023-07-03 15:33:46
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 19:22:10
+ * Last Modified: 2023-11-05 22:15:56
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -61,7 +61,7 @@ export default function PublicationItem(props: IPublicationItemProps) {
 
   return (
     <div className='cursor-default flex flex-row gap-3 max-md:flex-row-reverse
-     hover:bg-slate-50 duration-50 textcolor-body dark:hover:bg-slate-800'
+     hover:bg-slate-50 duration-50 textcolor-body'
     onClick={() => props.toggleShowAbstract && props.toggleShowAbstract()}
     >
       {/* <div className='flex flex-shrink-0 w-64 relative'> */}

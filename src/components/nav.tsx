@@ -4,7 +4,7 @@
  * Created: 2023-06-06 15:37:28
  * Author: Bill Chen (bill.chen@live.com)
  * -----
- * Last Modified: 2023-11-01 16:14:03
+ * Last Modified: 2023-11-05 22:23:55
  * Modified By: Bill Chen (bill.chen@live.com)
  */
 'use client';
@@ -51,9 +51,10 @@ export default function Nav(props: INavProps) {
       <nav className='fixed top-0 left-0'>
         <div className='navline-upper'></div>
         <div className='navhead flex flex-row w-screen'>
-          <div className='navhead-menu' onClick={() => setMenuActivated(!menuActivated)}>
-            <Image className='absolute left-2 top-[1.11rem] invert brightness-0'
-              src={'/assets/icons/hamburger.svg'} alt={'Hamburger Menu'} width={24} height={24} />
+          <div className='navhead-menu ' onClick={() => setMenuActivated(!menuActivated)}>
+            <Image className='absolute left-2 top-[1.11rem] brightness-0 invert saturate-0'
+              src={`/assets/icons/${menuActivated ? 'close.svg' : 'hamburger.svg'}`}
+              alt={'Hamburger Menu'} width={24} height={24} />
           </div>
           <Link href='/'>
             <div className='navhead-logo'>
@@ -84,6 +85,7 @@ export default function Nav(props: INavProps) {
         </div>
       </nav>
       <div className={'sm:hidden navbarmobile-container'}
+        onClick={() => setMenuActivated(false)}
         style={{
           opacity: menuActivated ? 1 : 0,
           pointerEvents: menuActivated ? 'auto': 'none',
