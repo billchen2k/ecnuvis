@@ -3,6 +3,7 @@ import '@/styles/global.scss';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Nav from '@/components/nav';
 import Footer from '@/components/footer';
+import Script from 'next/script';
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -30,6 +31,16 @@ export default function RootLayout(props: IRootLayoutProps) {
           {props.children}
         </main>
         <Footer />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6R0NZGRE43" />
+        <Script id='google-analytics'>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-6R0NZGRE43');
+          `}
+        </Script>
       </body>
     </html>
   );
