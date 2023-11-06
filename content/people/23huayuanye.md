@@ -5,8 +5,8 @@ image: 23huayuanye.jpeg
 category: master
 year: 2023
 description: ML4VIS
-github: ML4VIS
-homepage: 
+github: https://github.com/huayuan4396
+homepage:
 email: huayuan221@gmail.com
 ---
 
