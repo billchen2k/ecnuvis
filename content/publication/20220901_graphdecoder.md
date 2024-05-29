@@ -12,4 +12,6 @@ paper: https://ieeexplore.ieee.org/document/9966829
 video: http://chenhui.li/demo/TVCG2022_GraphDecoder.mp4
 code: 
 website: 
+tag:
+  - AI4VIS
 ---

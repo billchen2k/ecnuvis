@@ -11,4 +11,6 @@ paper: https://ieeexplore.ieee.org/document/9720180
 video: http://chenhui.li/demo/TVCG2022_VividGraph.mp4
 code: 
 website: 
+tag:
+  - AI4VIS
 ---

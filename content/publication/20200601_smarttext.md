@@ -10,4 +10,6 @@ paper: http://chenhui.li/documents/SmartText_ICME2020.pdf
 video:
 code: https://github.com/intchous/SmartText
 website:
+tag:
+  - AI4ArtDesign
 ---

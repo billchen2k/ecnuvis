@@ -99,6 +99,7 @@ export const Publication = defineDocumentType(() => ({
   fields: {
     title: {type: 'string', required: true},
     authors: {type: 'list', required: true, of: {type: 'string'}},
+    tag: {type: 'list', required: false, of: {type: 'string'}},
     venue: {type: 'string', required: false},
     abstract: {type: 'string', required: false},
     image: {type: 'string', required: false},

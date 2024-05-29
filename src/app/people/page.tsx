@@ -16,7 +16,7 @@ import '@/styles/people.scss';
 export interface IPeopleProps {
 }
 
-export default function People(props: IPeopleProps) {
+export default function PeopleFC(props: IPeopleProps) {
   const sections: {
     category: People['category'],
     title: string,

@@ -12,4 +12,6 @@ paper: http://chenhui.li/documents/TVCG2022_ColorPipette.pdf
 video: http://chenhui.li/demo/TVCG2022_Image_Driven_Vis_Color_Generation.mp4
 code: https://github.com/Shuqi-67/ColorPipette
 website: http://47.243.22.82:8080/
+tag:
+  - AI4VIS
 ---

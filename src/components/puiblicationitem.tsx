@@ -89,7 +89,10 @@ export default function PublicationItem(props: IPublicationItemProps) {
             dangerouslySetInnerHTML={{__html: getHighlight(publication.venue)}} />
         }
 
-        <div className='flex flex-row gap-2'>
+        <div className='flex flex-row gap-2 items-center'>
+          {
+            publication.tag?.map((item, index)=>(<div key={index} className='px-2 rounded-md text-sm h-5 leading-5 bg-slate-800 text-white height-2'>{item}</div>))
+          }
           {publication.paper &&
             iconLink('/assets/icons/pdf.svg', 'Paper', publication.paper)
           }

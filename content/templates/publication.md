@@ -17,4 +17,7 @@ paper: https://google.com
 video: https://google.com
 code: https://google.com
 website: https://google.com
+abstract: "abstract"
+tag:
+  - AI4Vis
 ---

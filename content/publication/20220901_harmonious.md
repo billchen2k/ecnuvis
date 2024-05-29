@@ -10,4 +10,6 @@ paper: http://chenhui.li/documents/TextualLayout_TMM2022.pdf
 video: 
 code: https://github.com/intchous/SmartText
 website: 
+tag:
+  - AI4ArtDesign
 ---

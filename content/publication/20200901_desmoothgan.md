@@ -13,4 +13,6 @@ paper: https://dl.acm.org/doi/pdf/10.1145/3394171.3413958
 video: 
 code: 
 website: 
+tag:
+  - AI4ArtDesign
 ---

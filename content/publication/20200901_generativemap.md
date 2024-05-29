@@ -12,4 +12,6 @@ paper: http://chenhui.li/documents/GenerativeMap_InfoVis_2019.pdf
 video: 
 code: 
 website: 
+tag:
+  - GeoVisualization
 ---
